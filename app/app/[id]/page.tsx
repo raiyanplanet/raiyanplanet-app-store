@@ -45,11 +45,7 @@ async function getApp(id: string): Promise<App | null> {
   return apps.find((app) => app.id === id) || null;
 }
 
-interface AppDetailPageProps {
-  params: { id: string };
-}
-
-export default async function AppDetail({ params }: AppDetailPageProps) {
+export default async function AppDetail({ params }: { params: { id: string } }) {
   const app = await getApp(params.id);
   if (!app) return notFound();
   return (
